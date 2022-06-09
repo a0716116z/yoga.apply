@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <!-- <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png"> -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-family: 微軟正黑體;
+      }
+      body {
+        background-color: #ddd;
+        width: 100%;
+      }
+      .container {
+        width: 85%;
+        max-width: 1440px;
+        margin: auto;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        background-color: #fff;
+      }
+      .intro {
+        /* width: 100%; */
+        /* max-width: 1440px; */
+        margin: auto;
+        /* background-color: rgb(238, 241, 238); */
+      }
+      .intro h1 {
+        font-size: 3.5rem;
+        color: hsl(179, 62%, 43%);
+        padding: 50px 6% 30px;
+      }
+
+      .intro h2 {
+        font-size: 2rem;
+        padding: 0px 6% 25px;
+        color: hsl(71, 73%, 54%);
+      }
+      .intro p {
+        display: inline-block;
+        width: 90%;
+        font-size: 1.6rem;
+        letter-spacing: 0.1em;
+        line-height: 1.6;
+        color: #bbb;
+        padding: 0px 6% 25px;
+        margin-bottom: 50px;
+      }
+
+      .section {
+        /* text-align: center; */
+        width: 100%;
+        display: flex;
+        /* align-items: center; */
+        justify-content: center;
+      }
+      .subscribe {
+        background-color: hsl(179, 62%, 43%);
+        width: 50%;
+        padding: 3% 6%;
+      }
+      .whyus {
+        width: 50%;
+        padding: 3% 6%;
+        background-color: hsla(139, 54%, 49%, 0.751);
+      }
+      h3 {
+        color: #fff;
+        font-size: 1.8rem;
+        line-height: 1.3;
+        font-weight: 700;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+        display: inline-block;
+        padding-bottom: 10px;
+        border-bottom: 2px solid hsl(204, 43%, 93%);
+      }
+      .section p {
+        color: hsl(204, 43%, 93%);
+        line-height: 1.8;
+        font-size: 1.5rem;
+      }
+
+      .join {
+        font-size: 2rem;
+        padding: 20px 30%;
+        background-color: hsl(71, 73%, 54%);
+        box-shadow: 0 0 20px -5px rgb(127, 145, 125);
+        margin: 50px 0 0;
+      }
+      button {
+        border: none;
+        color: #fff;
+        border-radius: 10px;
+      }
+      button:hover {
+        cursor: pointer;
+      }
+
+      .price {
+        color: #fff;
+        font-size: 3.5rem;
+        vertical-align: middle;
+        margin-bottom: 20px;
+      }
+      .price::after {
+        font-weight: 400;
+        content: "儲備幹部";
+        font-size: 1.5rem;
+        vertical-align: middle;
+        color: hsla(203, 44%, 93%, 0.808);
+        margin-left: 3%;
+      }
+      .section h4 {
+        font-weight: 400;
+        color: #fff;
+        line-height: 1.5;
+        font-size: 1.5rem;
+      }
+      .scrollowdown {
+        transform: scale(0);
+        opacity: 0;
+        transition: 0.4s;
+        display: none;
+        flex-direction: row-reverse;
+        /* justify-content: center; */
+        align-items: center;
+      }
+      .display {
+        opacity: 1;
+        transform: scale(1);
+        display: flex;
+      }
+      .pic {
+        width: 40%;
+        padding: 2%;
+        box-sizing: border-box;
+      }
+      img {
+        width: 100%;
+        vertical-align: bottom;
+      }
+      .information {
+        width: 60%;
+        padding: 2%;
+        box-sizing: border-box;
+        /* text-align: center; */
+      }
+
+      label {
+        font-size: 1.2rem;
+      }
+      input {
+        width: 90%;
+        display: block;
+        padding: 4px 10px;
+        font-size: 1.2rem;
+        text-decoration: none;
+        border: none;
+        margin: 1% 5% 2% 0%;
+        background-color: #f5f5f5;
+      }
+      .send {
+        font-size: 1.3rem;
+        padding: 15px 10%;
+        margin: auto;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        /* text-align: center; */
+      }
+      .whyus p i {
+        margin-top: 10px;
+        font-size: 2rem;
+        margin-right: 15px;
+        color: rgba(255, 238, 0, 0.807);
+      }
+      .whyus p {
+        font-weight: 600;
+      }
+      @media screen and (max-width: 600px) {
+        .intro {
+          padding-bottom: 10px;
+        }
+        .section {
+          flex-direction: column;
+          justify-content: center;
+          /* text-align: center; */
+        }
+        .subscribe,
+        .whyus {
+          width: 100%;
+          box-sizing: border-box;
+        }
+        .intro h1 {
+          font-size: 2.3rem;
+        }
+        .intro h2 {
+          font-size: 1.5rem;
+        }
+        .intro p {
+          font-size: 1rem;
+          margin-bottom: 10px;
+        }
+        .section h3 {
+          font-size: 1.5rem;
+        }
+        .price {
+          font-size: 2.3rem;
+        }
+        .price::after {
+          font-size: 1rem;
+        }
+        .section p {
+          font-size: 1rem;
+        }
+        .section h4 {
+          font-size: 1.2rem;
+        }
+
+        h3 {
+          margin-bottom: 10px;
+        }
+        .join {
+          font-size: 1.2rem;
+          width: 90%;
+          margin: 10px 0;
+        }
+      }
+    </style>
+    <title>成為瑜伽社幹部</title>
+
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="intro">
+        <h1>徵ㄉ就是你/妳</h1>
+        <h2>歡迎喜歡想多了解瑜伽或對擔任幹部有憧憬的<br />你/妳! 加入我們！</h2>
+        <p>
+          沒經驗，新手上路？不用怕，社務手把手教學，絕不孤單。<br />幹部群互相揪團運動、享受美食、歡樂
+        </p>
+      </div>
+
+      <div class="section">
+        <div class="subscribe">
+          <h3><i class="fas fa-user"></i>徵才資訊</h3>
+
+          <h1 class="price">2-3位</h1>
+          <!-- <h4>per month</h4> -->
+
+          <h4>協助社務(借教室、社課經營)<br />參與社務討論、參與幹部會議</h4>
+
+          <button class="join">立即加入</button>
+        </div>
+        <div class="whyus">
+          <h3><i class="fas fa-plus"></i>Why Us</h3>
+          <p><i class="fas fa-star"></i>期初、期末美食聚餐</p>
+          <p><i class="fas fa-star"></i>跨班無料社課、吃到飽</p>
+          <p><i class="fas fa-star"></i>拓展人際互動</p>
+          <p><i class="fas fa-star"></i>學習經營與管理班級</p>
+          <p><i class="fas fa-star"></i>平時耗費時間少，不怕耽誤課業</p>
+        </div>
+      </div>
+      <div class="scrollowdown">
+        <div class="pic">
+          <img src="yoga.png" alt="yoga" />
+        </div>
+        <!-- <form class="information"  method="get">
+          <label for="name">姓名</label>
+          <input type="text" name="name" id="name" value="">
+          <label for="schoolID">學號</label>
+          <input type="text" name="schoolID" id="schoolID" value="">
+          <label for="level">系級</label>
+          <input type="text" name="level" id="level" value="">
+          <label for="email">聯絡方式(mail)</label>
+          <input type="mail" name="email" id="email" value="">
+          <button type="submit" class="send" id="sendOrder">立即送出</button>
+        </form> -->
+        <div class="information">
+          <label for="name">姓名</label>
+          <input type="text" name="name" id="name" value="" />
+          <label for="schoolID">學號</label>
+          <input type="text" name="schoolID" id="schoolID" value="" />
+          <label for="level">系級</label>
+          <input type="text" name="level" id="level" value="" />
+          <label for="email">聯絡方式(mail)</label>
+          <input type="mail" name="email" id="email" value="" />
+          <button type="submit" class="send" id="sendOrder">立即送出</button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p class="attribution">Coded by NYCU_yoga_club.</p>
+    </footer>
+    <script type="text/javascript">
+      // $('.send').
+      $(function () {
+        // 監聽 送出訂單 按鈕點擊
+        // 下面這段主要在組合資料，還有擋使用者不填資料不能送出
+        $(".join").click(function (e) {
+          console.log("hello");
+          $(".scrollowdown").addClass("display");
+        });
+        $("#sendOrder").click(function (e) {
+          var status = true;
+          // 姓名
+          var name = $("#name").val();
+          // 電話
+          var schoolID = $("#schoolID").val();
+          var level = $("#level").val();
+          var email = $("#email").val();
+          // 訂單  後面再加上選項數量*價格
+          // var order = '';
+          // 價格 先預設0 後面再加上
+          // var price = 0;
+          $("input").focus(function () {
+            $(this).css("border", "");
+          });
+          // 處理價格 跟 訂單 資料
+          // $('.select').each(function(index) {
+          //   if($(this).val() !== ''){
+          //     order += $(this).data('name') + ' - ' + $(this).val() + '份 \n';
+          //     price += Number($(this).data('price')) * Number($(this).val());
+          //   }
+          // });
+          // order = order.substring(0, order.length - 1);
+
+          // 擋住不填資料邏輯
+          if (name == "") {
+            $("#name").css("border", "1px solid #ff0000");
+            status = false;
+          }
+          if (schoolID == "") {
+            $("#phone").css("border", "1px solid #ff0000");
+            status = false;
+          }
+          if (level == "") {
+            $("#level").css("border", "1px solid #ff0000");
+            status = false;
+          }
+          if (email == "") {
+            $("#email").css("border", "1px solid #ff0000");
+            // alert('請選擇訂購品項喔');
+            status = false;
+          }
+          // 如果 �必填欄位都過了 才會到這邊
+          if (status) {
+            // 增加日期資料
+            var currentdate = new Date();
+            var filltime =
+              currentdate.getFullYear() +
+              "/" +
+              (currentdate.getMonth() + 1) +
+              "/" +
+              currentdate.getDate() +
+              "  " +
+              currentdate.getHours() +
+              ":" +
+              currentdate.getMinutes() +
+              ":" +
+              currentdate.getSeconds();
+            // 打包 要的資料
+            var data = {
+              name: name,
+              schoolID: schoolID,
+              level: level,
+              email: email,
+              time: filltime,
+            };
+            console.log(data);
+            // 呼叫 send ajax function
+            send(data);
+          }
+        });
+      });
+      function send(data) {
+        $.ajax({
+          // 這邊用get type
+          type: "get",
+          // api url - google appscript 產出的 url
+          url: "https://script.google.com/macros/s/AKfycbzJ6ecg1pU4WyyiQVxLAlVdCBtBRD5Y0YI5841Bz-UP1EMuYB673OtxegDQXUy8Dtf5/exec",
+          // 剛剛整理好的資料帶入
+          data: data,
+          // 資料格式是JSON
+          dataType: "JSON",
+          // 成功送出 會回頭觸發下面這塊感謝
+          success: function (response) {
+            console.log(response);
+            $("#sendOrder").css("background", "#ffaabb");
+            $("#sendOrder").val("已送出");
+            alert("已送出");
+          },
+        });
+      }
+      // https://script.google.com/macros/s/AKfycbxTsIGoagW5SU9xq8P3PaRQrRTKp8V4O1mXN3YKQv5muHd5T7nctmbhmq1USL5FLZ3j/exec
+    </script>
+  </body>
+</html>
